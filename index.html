@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SDProPlastering – Hand-applied texture for modern living</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:      #F0EBE1;
+      --cream-dark: #E8E1D5;
+      --charcoal:   #2B2520;
+      --dark-bg:    #2E2B27;
+      --terra:      #A0673A;
+      --terra-dark: #7A4E2C;
+      --white:      #FFFFFF;
+      --muted:      #6B6358;
+      --border:     #D4CCC0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 60px;
+    }
+
+    .nav-logo {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      color: var(--charcoal);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--terra); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--terra); }
+
+    .nav-cta {
+      background: var(--charcoal);
+      color: var(--white);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 0.55rem 1.25rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--terra-dark); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: calc(100vh - 60px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 5rem 5rem 5rem 5rem;
+      gap: 4rem;
+      background: var(--cream);
+    }
+
+    .hero-text { max-width: 520px; }
+
+    .hero-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--charcoal);
+      margin-bottom: 1.5rem;
+    }
+    .hero-headline em {
+      font-style: italic;
+      color: var(--terra);
+    }
+
+    .hero-sub {
+      font-size: 0.97rem;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 380px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--terra-dark);
+      color: var(--white);
+      font-size: 0.88rem;
+      font-weight: 500;
+      padding: 0.85rem 1.6rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: #5E3A20; }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--charcoal);
+      font-size: 0.88rem;
+      font-weight: 500;
+      padding: 0.85rem 1.6rem;
+      border: 1.5px solid var(--charcoal);
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { background: var(--charcoal); color: var(--white); }
+
+    /* hero image column */
+    .hero-image-wrap {
+      position: relative;
+    }
+
+    .hero-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* placeholder image using CSS gradient */
+    .hero-img-placeholder {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: linear-gradient(160deg, #D4C4A8 0%, #C8A882 35%, #B8956A 60%, #A0825A 100%);
+      display: flex;
+      align-items: flex-end;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* architectural overlay shapes */
+    .hero-img-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, #8B7355 0%, #8B7355 18%, transparent 18%),
+        linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.08) 100%);
+    }
+    .hero-img-placeholder::after {
+      content: '';
+      position: absolute;
+      top: 15%;
+      left: 20%;
+      width: 30%;
+      height: 60%;
+      border: 3px solid #C8A882;
+      background: #B8956A;
+    }
+
+    .hero-badge {
+      position: absolute;
+      bottom: -1.5rem;
+      left: -2rem;
+      background: var(--terra);
+      color: var(--white);
+      padding: 1.75rem 2rem;
+      width: 200px;
+    }
+
+    .hero-badge-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      display: block;
+      line-height: 1;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-badge-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      line-height: 1.5;
+      opacity: 0.9;
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      background: var(--dark-bg);
+      padding: 6rem 5rem;
+      color: var(--white);
+    }
+
+    .services-header {
+      max-width: 680px;
+      margin-bottom: 1rem;
+    }
+
+    .services-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+    }
+
+    .services-subtitle {
+      font-size: 0.95rem;
+      font-style: italic;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+
+    .services-divider {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      margin: 2rem 0 3.5rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+    }
+
+    .service-card {}
+
+    .service-img-placeholder {
+      width: 100%;
+      aspect-ratio: 4/3;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+
+    .service-img-placeholder.stucco {
+      background: linear-gradient(135deg, #C4A882 0%, #D4B890 50%, #B89068 100%);
+      position: relative;
+    }
+    .service-img-placeholder.lime {
+      background: linear-gradient(135deg, #C8904A 0%, #E0A855 40%, #D4943C 100%);
+    }
+    .service-img-placeholder.restoration {
+      background: linear-gradient(135deg, #D4C0A0 0%, #C8AE88 50%, #B89870 100%);
+      position: relative;
+    }
+
+    /* worker silhouette for stucco card */
+    .service-img-placeholder.stucco::after {
+      content: '';
+      position: absolute;
+      bottom: 0; right: 20%;
+      width: 40%; height: 85%;
+      background: rgba(0,0,0,0.2);
+      clip-path: polygon(40% 0%, 60% 0%, 80% 20%, 100% 80%, 60% 100%, 20% 100%, 0% 80%, 20% 20%);
+    }
+
+    .service-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 0.6rem;
+      color: var(--white);
+    }
+
+    .service-desc {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.75;
+    }
+
+    /* ── PROCESS ── */
+    #process {
+      background: var(--cream);
+      padding: 6rem 5rem;
+    }
+
+    .process-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .process-title em {
+      font-style: italic;
+      color: var(--terra);
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+    }
+
+    .step-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--terra);
+      margin-bottom: 0.75rem;
+    }
+
+    .step-name {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 0.6rem;
+    }
+
+    .step-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--cream);
+      border-top: 1px solid var(--border);
+      padding: 6rem 5rem;
+      text-align: center;
+    }
+
+    .contact-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--terra);
+      margin-bottom: 1.25rem;
+    }
+
+    .contact-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      line-height: 1.25;
+    }
+
+    .contact-cards {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .contact-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 2rem 2.5rem;
+      text-align: left;
+      min-width: 260px;
+    }
+
+    .contact-card-label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-card-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--terra);
+    }
+
+    .contact-card-value.small {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
+      color: var(--charcoal);
+      font-weight: 400;
+      line-height: 1.8;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--cream-dark);
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-logo {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      color: var(--charcoal);
+    }
+    .footer-logo span { color: var(--terra); }
+
+    .footer-copy {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; padding: 3rem 2rem 5rem; }
+      .hero-image-wrap { display: none; }
+      .services-grid, .process-steps { grid-template-columns: 1fr; }
+      #services, #process, #contact { padding: 4rem 2rem; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem 2rem; }
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">SDPro<span>Plastering</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Request Quote</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1 class="hero-headline">
+        Hand-applied <em>texture</em> for modern living.
+      </h1>
+      <p class="hero-sub">
+        Specializing in premium residential stucco and traditional lime plastering.
+        We bring tactile warmth and enduring protection to Southern California's
+        finest homes.
+      </p>
+      <div class="hero-buttons">
+        <a href="#services" class="btn-primary">View Our Work</a>
+        <a href="#services" class="btn-outline">Our Expertise</a>
+      </div>
+    </div>
+
+    <div class="hero-image-wrap">
+      <div class="hero-img-placeholder" role="img" aria-label="Modern stucco exterior with warm tones"></div>
+      <div class="hero-badge">
+        <span class="hero-badge-num">15+</span>
+        <span class="hero-badge-label">Years of Specialized Residential Craftsmanship</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="services-header">
+      <h2 class="services-title">Refined Exterior Solutions</h2>
+      <p class="services-subtitle">From traditional three-coat systems to bespoke interior Venetian finishes.</p>
+    </div>
+    <hr class="services-divider" />
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-img-placeholder stucco" role="img" aria-label="Craftsman applying traditional stucco"></div>
+        <h3 class="service-name">Traditional Stucco</h3>
+        <p class="service-desc">Durable three-coat cement systems designed for longevity and classic curb appeal.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-img-placeholder lime" role="img" aria-label="Venetian plaster texture in warm amber"></div>
+        <h3 class="service-name">Lime &amp; Venetian Plaster</h3>
+        <p class="service-desc">Artisanal interior textures that breathe and age beautifully over time.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-img-placeholder restoration" role="img" aria-label="Restored Spanish colonial exterior"></div>
+        <h3 class="service-name">Restoration &amp; Repair</h3>
+        <p class="service-desc">Expert color matching and structural repairs for existing residential envelopes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <h2 class="process-title">A Considered <em>Process</em>.</h2>
+
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <h3 class="step-name">On-site consultation</h3>
+        <p class="step-desc">We visit your home to assess substrate, exposure, and aesthetic goals — no obligation.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <h3 class="step-name">Detailed proposal</h3>
+        <p class="step-desc">A written scope of work, material specifications, and a firm timeline within five business days.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <h3 class="step-name">Hand-crafted execution</h3>
+        <p class="step-desc">Our small crew applies every coat by hand, with daily site cleanup and a final walk-through.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="contact-eyebrow">Get a Consultation</p>
+    <h2 class="contact-title">Start your home's transformation today.</h2>
+    <div class="contact-cards">
+      <div class="contact-card">
+        <div class="contact-card-label">Email Us Today </div>
+        <div class="contact-card-value">sd.pro.plastering@gmail.com</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-label">Office Hours</div>
+        <div class="contact-card-value small">
+          Mon — Fri: 8am – 6pm<br />
+          Saturday by appointment
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">SDPro<span>Plastering</span></div>
+    <div class="footer-copy">© 2026 SDProPlastering. Licensed &amp; Insured.</div>
+  </footer>
+
+</body>
+</html>
