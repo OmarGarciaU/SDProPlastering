@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TerraFinish – Hand-applied texture for modern living</title>
+  <title>SDProPlastering – Hand-applied texture for modern living</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -163,7 +163,36 @@
       display: block;
     }
 
+    /* placeholder image using CSS gradient */
+    .hero-img-placeholder {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: linear-gradient(160deg, #D4C4A8 0%, #C8A882 35%, #B8956A 60%, #A0825A 100%);
+      display: flex;
+      align-items: flex-end;
+      position: relative;
+      overflow: hidden;
+    }
 
+    /* architectural overlay shapes */
+    .hero-img-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, #8B7355 0%, #8B7355 18%, transparent 18%),
+        linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.08) 100%);
+    }
+    .hero-img-placeholder::after {
+      content: '';
+      position: absolute;
+      top: 15%;
+      left: 20%;
+      width: 30%;
+      height: 60%;
+      border: 3px solid #C8A882;
+      background: #B8956A;
+    }
 
     .hero-badge {
       position: absolute;
@@ -424,7 +453,7 @@
 
   <!-- NAV -->
   <nav>
-    <a href="#" class="nav-logo">TERRA<span>FINISH</span></a>
+    <a href="#" class="nav-logo">SDPro<span>Plastering</span></a>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
       <li><a href="#process">Process</a></li>
@@ -441,7 +470,7 @@
       </h1>
       <p class="hero-sub">
         Specializing in premium residential stucco and traditional lime plastering.
-        We bring tactile warmth and enduring protection to the Pacific Northwest's
+        We bring tactile warmth and enduring protection to Southern California's
         finest homes.
       </p>
       <div class="hero-buttons">
@@ -451,7 +480,7 @@
     </div>
 
     <div class="hero-image-wrap">
-      <img src="images/Wall.jpg" alt="Modern stucco exterior with warm tones" class="hero-img" />
+        <img src = "images/Wall.jpg" alt = "Modern stucco exterior with warm tones" class = "hero-img" />
       <div class="hero-badge">
         <span class="hero-badge-num">15+</span>
         <span class="hero-badge-label">Years of Specialized Residential Craftsmanship</span>
@@ -462,7 +491,7 @@
   <!-- SERVICES -->
   <section id="services">
     <div class="services-header">
-      <h2 class="services-title">Refined exterior solutions</h2>
+      <h2 class="services-title">Refined Exterior Solutions</h2>
       <p class="services-subtitle">From traditional three-coat systems to bespoke interior Venetian finishes.</p>
     </div>
     <hr class="services-divider" />
@@ -488,7 +517,7 @@
 
   <!-- PROCESS -->
   <section id="process">
-    <h2 class="process-title">A considered <em>process</em>.</h2>
+    <h2 class="process-title">A Considered <em>Process</em>.</h2>
 
     <div class="process-steps">
       <div class="process-step">
@@ -515,8 +544,8 @@
     <h2 class="contact-title">Start your home's transformation today.</h2>
     <div class="contact-cards">
       <div class="contact-card">
-        <div class="contact-card-label">Direct Line</div>
-        <div class="contact-card-value">(555) 124-8900</div>
+        <div class="contact-card-label">Email Us Today </div>
+        <div class="contact-card-value">sd.pro.plastering@gmail.com</div>
       </div>
       <div class="contact-card">
         <div class="contact-card-label">Office Hours</div>
@@ -530,8 +559,8 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-logo">TERRA<span>FINISH</span></div>
-    <div class="footer-copy">© 2026 TerraFinish Artisanal Plastering. Licensed &amp; Insured.</div>
+    <div class="footer-logo">SDPro<span>Plastering</span></div>
+    <div class="footer-copy">© 2026 SDProPlastering. Licensed &amp; Insured.</div>
   </footer>
 
 </body>
